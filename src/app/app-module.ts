@@ -21,6 +21,7 @@ import { PuntoVenta } from './punto-venta/punto-venta';
 import { UnidadesMedida } from './unidades-medida/unidades-medida';
 import { Usuarios } from './usuarios/usuarios';
 import { Ventas } from './ventas/ventas';
+import { CategoriaModalComponent } from './categorias/categoria-modal/categoria-modal.component';
 
 
 
@@ -28,6 +29,7 @@ import { Ventas } from './ventas/ventas';
   declarations: [
     App,
     Categorias,
+    CategoriaModalComponent
     /*
     AperturaCaja,
     CierreCaja,
