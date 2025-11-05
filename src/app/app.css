@@ -17,3 +17,15 @@
     height: 22px;
     position: absolute;
 }
+
+.modal-background{
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+
+.modal-header{
+    background-color: #1e85eb;
+    color: #eff2f5;
+}
+.btn.close{
+    color:#f8f9fa
+}
