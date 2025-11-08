@@ -25,6 +25,7 @@ import { CategoriaModalComponent } from './categorias/categoria-modal/categoria-
 import { MessageComponent } from './message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MetodoPagoModalComponent } from './metodos-pago/metodo-pago-modal/metodo-pago-modal.component';
+import { ReporteProductoModalComponent } from './productos/reporte-producto-modal/reporte-producto-modal.component';
 
 
 
@@ -36,6 +37,9 @@ import { MetodoPagoModalComponent } from './metodos-pago/metodo-pago-modal/metod
     MessageComponent,
     MetodosPago,
     MetodoPagoModalComponent,
+    Productos,
+    ReporteProductoModalComponent,
+
     /*
     AperturaCaja,
     CierreCaja,
@@ -44,7 +48,6 @@ import { MetodoPagoModalComponent } from './metodos-pago/metodo-pago-modal/metod
     Inventario,
     MovimientoInventario,
     OtrosMovimientos,
-    Productos,
     Proveedores,
     PuntoVenta,
     UnidadesMedida,

@@ -1,19 +1,20 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { MetodoPago } from '../../_class/metodo-pago';
+import { ReporteProducto } from '../../_class/reporte-producto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Categoria } from '../../_class/categoria';
 
 @Component({
-  selector: 'app-metodo-pago-modal',
+  selector: 'app-reporte-producto-modal',
   standalone: false,
-  templateUrl: './metodo-pago-modal.component.html',
-  styleUrls: ['./metodo-pago-modal.component.css', '../../app.css']
+  templateUrl: './reporte-producto-modal.component.html',
+  styleUrls: ['./reporte-producto-modal.component.css', '../../app.css']
 })
-export class MetodoPagoModalComponent implements OnChanges{
+export class ReporteProductoModalComponent implements OnChanges {
   @Input() showModal = false;
   @Input() modalTitle = "";
-  @Input() data: MetodoPago | null = null;
+  @Input() data: ReporteProducto | null = null;
   @Output() closeModalEvent = new EventEmitter<void>();
-  @Output() saveEvent = new EventEmitter<MetodoPago>();
+  @Output() saveEvent = new EventEmitter<ReporteProducto>();
 
   form: FormGroup;
   edit=false;
@@ -23,7 +24,10 @@ export class MetodoPagoModalComponent implements OnChanges{
     this.form = this.builder.group({
       id: [this.data?.id],
       nombre: [this.data?.nombre, Validators.required],
-      descripcion: [this.data?.descripcion, Validators.required],
+      precio: [this.data?.precio, Validators.required],
+      existencia: [this.data?.existencia, Validators.required],
+      categoria: [this.data?.categoria, Validators.required],
+      estado: [this.data?.estado, Validators.required],
     });
    }
 

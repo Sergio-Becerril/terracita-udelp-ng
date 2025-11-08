@@ -1,1 +1,37 @@
-<p>productos works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"reportes-producto.name" | transloco}}</th>
+      <th scope="col">{{"reportes-producto.precio" | transloco}}</th>
+      <th scope="col">{{"reportes-producto.existencia" | transloco}}</th>
+      <th scope="col">{{"reportes-producto.categoria" | transloco}}</th>
+      <th scope="col">{{"reportes-producto.estado" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of reportesProducto">
+      <td>{{c.nombre}}</td>
+      <td>{{c.precio}}</td>
+        <td>{{c.existencia}}</td>
+        <td>{{c.categoria}}</td>
+        <td>{{c.estado}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{reportesProducto.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-reporte-producto-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="reporteProducto"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-reporte-producto-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>
