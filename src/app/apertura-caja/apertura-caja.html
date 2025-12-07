@@ -1,1 +1,35 @@
-<p>apertura-caja works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"apertura-caja.usuario" | transloco}}</th>
+      <th scope="col">{{"apertura-caja.fecha-apertura" | transloco}}</th>
+      <th scope="col">{{"apertura-caja.monto-inicial" | transloco}}</th>
+      <th scope="col">{{"apertura-caja.estatus" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of aperturasCaja">
+      <td>{{c.idUsuario}}</td>
+      <td>{{c.fechaApertura}}</td>
+      <td>{{c.montoInicial}}</td>
+      <td>{{c.estatus? ('labels.activo' | transloco) : ('labels.inactivo' | transloco)}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{aperturasCaja.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-apertura-caja-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="aperturaCaja"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-apertura-caja-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>

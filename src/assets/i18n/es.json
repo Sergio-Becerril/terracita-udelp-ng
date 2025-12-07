@@ -41,6 +41,12 @@
         "add-metodo-pago":"Agregar Metodo de Pago",
         "edit-metodo-pago":"Editar Metodo de Pago"
     },
+    "inventario": {
+        "name":"Nombre",
+        "description":"Descripcion",
+        "add-inventario":"Agregar Inventario",
+        "edit-invetario":"Editar Inventario"
+    },
     "reportes-producto": {
         "name":"Nombre",
         "precio":"Precio",
@@ -50,9 +56,98 @@
         "add-producto":"Agregar Producto",
         "edit-producto":"Editar Producto"
     },
+    "unidades-medida": {
+        "name": "Nombre",
+        "abreviatura": "Abreviatura",
+        "activo": "Activo",
+        "add-unidad": "Agregar Unidad",
+        "edit-unidad": "Editar Unidad"
+    },
+    "proveedores": {
+        "name": "Nombre",
+        "telefono": "Teléfono",
+        "email": "Correo Electrónico",
+        "direccion": "Dirección",
+        "activo": "Activo",
+        "add-proveedor": "Agregar Proveedor",
+        "edit-proveedor": "Editar Proveedor"
+    },
+    "otros-movimientos": {
+        "name": "Nombre",
+        "es-entrada": "Es Entrada",
+        "descripcion": "Descripción",
+        "activo": "Activo",
+        "add-tipo-movimiento": "Agregar Tipo de Movimiento",
+        "edit-tipo-movimiento": "Editar Tipo de Movimiento"
+    },
+    "movimiento-inventario": {
+        "producto": "Producto",
+        "tipo-movimiento": "Tipo de Movimiento",
+        "cantidad": "Cantidad",
+        "existencia-anterior": "Existencia Anterior",
+        "existencia-nueva": "Existencia Nueva",
+        "referencia": "Referencia",
+        "fecha-hora": "Fecha y Hora",
+        "usuario": "Usuario",
+        "motivo": "Motivo",
+        "add-movimiento": "Registrar Movimiento",
+        "edit-movimiento": "Editar Movimiento"
+    },
+    "usuarios": {
+        "name-usuario": "Nombre de Usuario",
+        "password": "Contraseña",
+        "rol": "Rol",
+        "activo": "Activo",
+        "add-usuario": "Agregar Usuario",
+        "edit-usuario": "Editar Usuario"
+    },
+    "ventas": {
+        "fecha-hora": "Fecha y Hora",
+        "total": "Total",
+        "forma-pago": "Forma de Pago",
+        "usuario": "Vendedor",
+        "estatus": "Estatus",
+        "producto": "Producto",
+        "cantidad": "Cantidad",
+        "precio-unitario": "Precio Unitario",
+        "subtotal": "Subtotal",
+        "add-venta": "Nueva Venta",
+        "edit-venta": "Editar Venta"
+    },
+    "compras": {
+        "proveedor": "Proveedor",
+        "fecha-hora": "Fecha de Compra",
+        "total": "Total",
+        "usuario": "Comprador",
+        "estatus": "Estatus",
+        "producto": "Producto",
+        "cantidad": "Cantidad",
+        "costo-unitario": "Costo Unitario",
+        "subtotal": "Subtotal",
+        "add-compra": "Registrar Compra",
+        "edit-compra": "Editar Venta"
+    },
+    "apertura-caja": {
+        "usuario": "Usuario",
+        "fecha-apertura": "Fecha de Apertura",
+        "monto-inicial": "Monto Inicial",
+        "estatus": "Estatus",
+        "add-apertura": "Abrir Caja",
+        "edit-apertura": "Editar Apertura"
+    },
+    "cierre-caja": {
+        "usuario": "Usuario",
+        "fecha-cierre": "Fecha de Cierre",
+        "monto-cierre": "Monto de Cierre",
+        "add-cierre": "Cerrar Caja",
+        "edit-cierre": "Editar Cierre"
+    },
     "labels": {
         "num-records":"Numero de registros",
-        "required-field": "Este campo es obligatorio."
+        "required-field": "Este campo es obligatorio",
+        "activo":"Activo",
+        "inactivo":"Inactivo",
+        "total":"Total"
     },
     "messages": {
         "success":"Exito",

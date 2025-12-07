@@ -1,0 +1,47 @@
+<div class="modal modal-background fade" id="staticBackdrop" data-bs-backdrop="static" 
+data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+[class.show]="showModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{modalTitle | transloco}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="mb-3">
+            <label class="form-label">{{"cierre-caja.usuario" | transloco}}</label>
+            <input type="text" class="form-control" formControlName="idUsuario" id="idUsuario">
+            <div *ngIf="form.get('idUsuario')?.invalid"
+            class="text-danger mt-1">
+            {{"labels.required-field" | transloco}}
+            </div>
+         </div>
+         <div class="mb-3">
+            <label class="form-label">{{"cierre-caja.fecha-cierre" | transloco}}</label>
+            <input type="datetime-local" class="form-control" formControlName="fechaCierre" id="fechaCierre">
+            <div *ngIf="form.get('fechaCierre')?.invalid"
+            class="text-danger mt-1">
+            {{"labels.required-field" | transloco}}
+            </div>
+         </div>
+         <div class="mb-3">
+            <label class="form-label">{{"cierre-caja.monto-cierre" | transloco}}</label>
+            <input type="number" class="form-control" formControlName="montoCierre" id="montoCierre">
+            <div *ngIf="form.get('montoCierre')?.invalid"
+            class="text-danger mt-1">
+            {{"labels.required-field" | transloco}}
+            </div>
+         </div>
+        
+
+          <input type="hidden" formControlName="idCierre" id="idCierre">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveModal()">{{"buttons.save" | transloco}}</button>
+      </div>
+    </div>
+  </div>
+</div>

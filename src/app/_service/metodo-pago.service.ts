@@ -23,6 +23,7 @@ export class MetodoPagoService {
     }
   
     add(MetodoPago: MetodoPago) {
+      MetodoPago.id=this.data.reduce((max, item) => item.id > max ? item.id: max, 0) + 1;
       this.data.push(MetodoPago);
     }
   

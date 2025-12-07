@@ -6,9 +6,12 @@ import { ReporteProducto } from '../_class/reporte-producto';
 })
 export class ReporteProductoService {
   
-  data: ReporteProducto[] = [{id:1, nombre: "Agua", precio: 1, existencia:5, categoria:"General", estado:"Activo"},
-                                {id:2 , nombre: "Cafe", precio: 2, existencia:10, categoria:"General", estado:"Activo"},
-                                {id:3, nombre: "Te", precio: 3, existencia:20, categoria:"General", estado:"Activo"},
+  data: ReporteProducto[] = [{id:1, nombre: "Agua", precio: 1, existencia:5, 
+                              categoria: {id:1,nombre:'Bebidas', descripcion:"", productos: null}, estado:true, cantidad:0},
+                              {id:2 , nombre: "Cafe", precio: 2, existencia:10, 
+                              categoria:{id:1,nombre:'Bebidas', descripcion:"", productos: null}, estado:true, cantidad:0},
+                              {id:3, nombre: "Te", precio: 3, existencia:20, 
+                              categoria:{id:1,nombre:'Bebidas', descripcion:"", productos: null}, estado:true, cantidad:0},
       ];
     
     
@@ -23,6 +26,7 @@ export class ReporteProductoService {
       }
     
       add(ReporteProducto: ReporteProducto) {
+        ReporteProducto.id=this.data.reduce((max, item) => item.id > max ? item.id: max, 0) + 1;
         this.data.push(ReporteProducto);
       }
     

@@ -1,0 +1,94 @@
+<div class="modal modal-background fade" id="staticBackdrop" data-bs-backdrop="static" 
+data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" 
+[class.show]="showModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{modalTitle | transloco}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" 
+        (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.producto" | transloco}}</label>
+            <input class="text" class="form-control" formControlName="idProducto" id="idProducto">
+            <div *ngIf="form.get('idProducto')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.tipo-movimiento" | transloco}}</label>
+            <input class="text" class="form-control" formControlName="idTipoMovimiento" id="idTipoMovimiento">
+            <div *ngIf="form.get('idTipoMovimiento')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.cantidad" | transloco}}</label>
+            <input type="number" class="form-control" formControlName="cantidad" id="cantidad">
+            <div *ngIf="form.get('cantidad')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.existencia-anterior" | transloco}}</label>
+            <input type="number" class="form-control" formControlName="existenciaAnterior" id="existenciaAnterior">
+            <div *ngIf="form.get('existenciaAnterior')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.existencia-nueva" | transloco}}</label>
+            <input type="number" class="form-control" formControlName="existenciaNueva" id="existenciaNueva">
+            <div *ngIf="form.get('existenciaNueva')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.referencia" | transloco}}</label>
+            <input type="text" class="form-control" formControlName="referencia" id="referencia">
+            <div *ngIf="form.get('referencia')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.usuario" | transloco}}</label>
+            <input class="text" class="form-control"  formControlName="idUsuario" id="idUsuario">
+            <div *ngIf="form.get('idUsuario')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.motivo" | transloco}}</label>
+            <input type="text" class="form-control" formControlName="motivo" id="motivo">
+            <div *ngIf="form.get('motivo')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">{{"movimiento-inventario.fecha-hora" | transloco}}</label>
+            <input type="datetime-local" class="form-control" formControlName="fechaHora" id="fechaHora">
+            <div *ngIf="form.get('fechaHora')?.invalid" class="text-danger mt-1">
+              {{"labels.required-field" | transloco}}
+            </div>
+          </div>
+
+          <input type="hidden" formControlName="idMovimiento" id="idMovimiento">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveModal()">{{"buttons.save" | transloco}}</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.lbl-total{
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.lbl-monto{
+    font-size: 18pt;
+    font-weight: bolder;
+
+}
+
+.btn-info{
+    background-color: #00577D;
+    color: white;
+}

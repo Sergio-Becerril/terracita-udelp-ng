@@ -1,1 +1,35 @@
-<p>usuarios works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"usuarios.name-usuario" | transloco}}</th>
+      <th scope="col">{{"usuarios.password" | transloco}}</th>
+      <th scope="col">{{"usuarios.rol" | transloco}}</th>
+      <th scope="col">{{"usuarios.activo" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of usuarios">
+      <td>{{c.nombreUsuario}}</td>
+      <td>{{c.passwordHash}}</td>
+      <td>{{c.rol}}</td>
+      <td>{{c.activo? ('labels.activo' | transloco) : ('labels.inactivo' | transloco)}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{usuarios.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-usuario-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="usuario"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-usuario-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>

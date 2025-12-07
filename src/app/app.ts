@@ -29,7 +29,7 @@ export class App {
         {description: "views.inventario", url: "/procesos/inventarios"},
         {description: "views.movimientos-inventario", url: "/procesos/movimiento-inventario"},
         {description: "views.apertura-caja", url: "/procesos/apertura-caja"},
-        {description: "views.cierre-caja", url: "/procesos/cierrre-caja"},
+        {description: "views.cierre-caja", url: "/procesos/cierre-caja"},
         {description: "views.otros-movimientos", url: "/procesos/otros-movimientos"}
       ]},
       {description: "menu.administracion", 

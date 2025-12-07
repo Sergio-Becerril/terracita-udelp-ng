@@ -1,1 +1,45 @@
-<p>ventas works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"ventas.forma-pago" | transloco}}</th>
+      <th scope="col">{{"ventas.fecha-hora" | transloco}}</th>
+      <th scope="col">{{"ventas.usuario" | transloco}}</th>
+      <th scope="col">{{"ventas.estatus" | transloco}}</th>
+      <th scope="col">{{"ventas.producto" | transloco}}</th>
+      <th scope="col">{{"ventas.cantidad" | transloco}}</th>
+      <th scope="col">{{"ventas.precio-unitario" | transloco}}</th>
+      <th scope="col">{{"ventas.subtotal" | transloco}}</th>
+      <th scope="col">{{"ventas.total" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of ventas">
+      <td>{{c.idFormaPago}}</td>
+      <td>{{c.fechaHora}}</td>
+      <td>{{c.idUsuario}}</td>
+      <td>{{c.estatus}}</td>
+      <td>{{c.idProducto}}</td>
+      <td>{{c.cantidad}}</td>
+      <td>{{c.precioUnitario}}</td>
+      <td>{{c.subtotal}}</td>
+      <td>{{c.total}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{ventas.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-venta-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="venta"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-venta-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>

@@ -7,13 +7,13 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { Categorias } from './categorias/categorias';
-import { AperturaCaja } from './apertura-caja/apertura-caja';
-import { CierreCaja } from './cierre-caja/cierre-caja';
+import { AperturasCaja } from './apertura-caja/apertura-caja';
+import { CierresCaja } from './cierre-caja/cierre-caja';
 import { Compras } from './compras/compras';
 import { Home } from './home/home';
-import { Inventario } from './inventario/inventario';
+import { Inventarios } from './inventario/inventario';
 import { MetodosPago } from './metodos-pago/metodos-pago';
-import { MovimientoInventario } from './movimiento-inventario/movimiento-inventario';
+import { MovimientosInventario } from './movimiento-inventario/movimiento-inventario';
 import { OtrosMovimientos } from './otros-movimientos/otros-movimientos';
 import { Productos } from './productos/productos';
 import { Proveedores } from './proveedores/proveedores';
@@ -26,6 +26,16 @@ import { MessageComponent } from './message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MetodoPagoModalComponent } from './metodos-pago/metodo-pago-modal/metodo-pago-modal.component';
 import { ReporteProductoModalComponent } from './productos/reporte-producto-modal/reporte-producto-modal.component';
+import { ProveedorModalComponent } from './proveedores/proveedor-modal/proveedor-modal.component';
+import { AperturaCajaModalComponent } from './apertura-caja/apertura-caja-modal.component/apertura-caja-modal.component';
+import { CierreCajaModalComponent } from './cierre-caja/cierre-caja-modal.component/cierre-caja-modal.component';
+import { CompraModalComponent } from './compras/compra-modal.component/compra-modal.component';
+import { InventarioModalComponent } from './inventario/inventario-modal.component/inventario-modal.component';
+import { MovimientoInventarioModalComponent } from './movimiento-inventario/movimiento-inventario-modal.component/movimiento-inventario-modal.component';
+import { OtroMovimientoModalComponent } from './otros-movimientos/otro-movimiento-modal.component/otro-movimiento-modal.component';
+import { UnidadMedidaModalComponent } from './unidades-medida/unidad-medida-modal.component/unidad-medida-modal.component';
+import { UsuarioModalComponent } from './usuarios/usuario-modal.component/usuario-modal.component';
+import { VentaModalComponent } from './ventas/venta-modal.component/venta-modal.component';
 
 
 
@@ -39,20 +49,30 @@ import { ReporteProductoModalComponent } from './productos/reporte-producto-moda
     MetodoPagoModalComponent,
     Productos,
     ReporteProductoModalComponent,
-
-    /*
-    AperturaCaja,
-    CierreCaja,
+    PuntoVenta,
+    //Home,
+    AperturasCaja,
+    CierresCaja,
     Compras,
-    Home,
-    Inventario,
-    MovimientoInventario,
+    Inventarios,
+    MovimientosInventario,
     OtrosMovimientos,
     Proveedores,
-    PuntoVenta,
     UnidadesMedida,
     Usuarios,
-    Ventas*/
+    Ventas,
+    
+    AperturaCajaModalComponent,
+    CierreCajaModalComponent,
+    CompraModalComponent,
+    InventarioModalComponent,
+    MovimientoInventarioModalComponent,
+    OtroMovimientoModalComponent,
+    ProveedorModalComponent,
+    UnidadMedidaModalComponent,
+    UsuarioModalComponent,
+    VentaModalComponent
+    
   ],
   imports: [
     CommonModule,

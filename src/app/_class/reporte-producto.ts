@@ -1,10 +1,12 @@
+import { Categoria } from "./categoria";
+
 export interface ReporteProducto {
     id: number;
     nombre: string;
     precio: number;
     existencia: number;
-    categoria: string;
-    estado: string;
-
+    categoria: Categoria | null;
+    estado: boolean;
+    cantidad: number;
 }
 

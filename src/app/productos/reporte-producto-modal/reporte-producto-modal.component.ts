@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { ReporteProducto } from '../../_class/reporte-producto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from '../../_class/categoria';
+import { CategoriaService } from '../../_service/categoria.service';
 
 @Component({
   selector: 'app-reporte-producto-modal',
@@ -13,6 +14,7 @@ export class ReporteProductoModalComponent implements OnChanges {
   @Input() showModal = false;
   @Input() modalTitle = "";
   @Input() data: ReporteProducto | null = null;
+  @Input() categorias: Categoria[] = [];
   @Output() closeModalEvent = new EventEmitter<void>();
   @Output() saveEvent = new EventEmitter<ReporteProducto>();
 
@@ -26,8 +28,8 @@ export class ReporteProductoModalComponent implements OnChanges {
       nombre: [this.data?.nombre, Validators.required],
       precio: [this.data?.precio, Validators.required],
       existencia: [this.data?.existencia, Validators.required],
-      categoria: [this.data?.categoria, Validators.required],
-      estado: [this.data?.estado, Validators.required],
+      categoria: [this.data?.categoria?.id],
+      estado: [this.data?.estado],
     });
    }
 
@@ -46,6 +48,8 @@ export class ReporteProductoModalComponent implements OnChanges {
   }
   saveModal() {
     if (this.form.valid) {
+        let tempCategoria = this.categorias.find(c => c.id == this.form.value.categoria)||null;
+        this.form.value.categoria = tempCategoria;
       this.saveEvent.emit(this.form.value);
     }
   }

@@ -15,10 +15,10 @@
   <tbody>
     <tr *ngFor="let c of reportesProducto">
       <td>{{c.nombre}}</td>
-      <td>{{c.precio}}</td>
-        <td>{{c.existencia}}</td>
-        <td>{{c.categoria}}</td>
-        <td>{{c.estado}}</td>
+      <td>{{c.precio | currency: 'MXN'}}</td>
+      <td>{{c.existencia}}</td>
+      <td>{{c.estado? ('labels.activo' | transloco) : ('labels.inactivo' | transloco)}}</td>
+      <td>{{c.categoria?.nombre}}</td>
       <td>
         <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
       </td>
@@ -31,7 +31,7 @@
  <app-reporte-producto-modal [showModal]="showModal" 
  [modalTitle]="modalTitle" [data]="reporteProducto"
  (closeModalEvent)="closeModalEvent()" 
- (saveEvent)="saveEvent($event)"></app-reporte-producto-modal> 
+ (saveEvent)="saveEvent($event)" [categorias]="categoriasModal"></app-reporte-producto-modal> 
 
  <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
  [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>

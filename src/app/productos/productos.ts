@@ -3,6 +3,8 @@ import { AppReport } from '../util/app-report';
 import { Router } from '@angular/router';
 import { ReporteProducto } from '../_class/reporte-producto';
 import { ReporteProductoService } from '../_service/reporte-producto.service';
+import { CategoriaService } from '../_service/categoria.service';
+import { Categoria } from '../_class/categoria';
 
 @Component({
   selector: 'app-productos',
@@ -17,8 +19,10 @@ export class Productos extends AppReport implements OnInit {
   modalTitle = "";
   reporteProducto: ReporteProducto | null = null;
   uri = "catalogos-generales/productos";
+  categoriasModal: Categoria[] = [];
 
-  constructor(private service: ReporteProductoService, router: Router) {
+  constructor(private service: ReporteProductoService, router: Router, 
+    private categoriasService: CategoriaService) {
     super(router);
    }
 
@@ -27,11 +31,13 @@ export class Productos extends AppReport implements OnInit {
   }
 
   openAddModal() {
+    this.categoriasModal = this.categoriasService.getCategorias();
     this.modalTitle = "reportes-producto.add-producto";
     this.reporteProducto = null;
     this.showModal = true;
   }
   openEditModal(reporteProducto: ReporteProducto) {
+    this.categoriasModal = this.categoriasService.getCategorias();
     this.modalTitle = "reportes-producto.edit-producto";
     this.reporteProducto = reporteProducto;
     this.showModal = true;

@@ -1,1 +1,31 @@
-<p>inventario works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"inventario.name" | transloco}}</th>
+      <th scope="col">{{"inventario.description" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of inventarios">
+      <td>{{c.nombre}}</td>
+      <td>{{c.descripcion}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{inventarios.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-inventario-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="inventario"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-inventario-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>

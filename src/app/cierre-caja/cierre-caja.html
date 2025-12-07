@@ -1,1 +1,33 @@
-<p>cierre-caja works!</p>
+<button type="button" class="btn add-button" (click)="openAddModal()"></button>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">{{"cierre-caja.usuario" | transloco}}</th>
+      <th scope="col">{{"cierre-caja.fecha-cierre" | transloco}}</th>
+      <th scope="col">{{"cierre-caja.monto-cierre" | transloco}}</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of cierresCaja">
+      <td>{{c.idUsuario}}</td>
+      <td>{{c.fechaCierre}}</td>
+      <td>{{c.montoCierre}}</td>
+      <td>
+        <button type="button" class="btn edit-button" (click)="openEditModal(c)"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="num-records">{{cierresCaja.length}} {{"labels.num-records" | transloco}}</div>
+
+<!-- Modal -->
+ <app-cierre-caja-modal [showModal]="showModal" 
+ [modalTitle]="modalTitle" [data]="cierreCaja"
+ (closeModalEvent)="closeModalEvent()" 
+ (saveEvent)="saveEvent($event)"></app-cierre-caja-modal> 
+
+ <app-message [showModal]="showModalMessage" [messageTitle]="modalTitleMessage"
+ [messageBody]="messageBody" (aceptar)="closeMessageModal($event)" [uri]="uri"></app-message>
