@@ -12,6 +12,10 @@ export class ReporteProductoService {
                               categoria:{id:1,nombre:'Bebidas', descripcion:"", productos: null}, estado:true, cantidad:0},
                               {id:3, nombre: "Te", precio: 3, existencia:20, 
                               categoria:{id:1,nombre:'Bebidas', descripcion:"", productos: null}, estado:true, cantidad:0},
+                              {id:4, nombre: "Hamburgesa", precio: 6, existencia:60, 
+                              categoria:{id:2,nombre:'Comida', descripcion:"", productos: null}, estado:true, cantidad:0},
+                              {id:5, nombre: "Flan", precio: 8, existencia:50, 
+                              categoria:{id:3,nombre:'Postre', descripcion:"", productos: null}, estado:true, cantidad:0},
       ];
     
     

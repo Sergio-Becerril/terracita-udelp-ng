@@ -1,74 +1,122 @@
-<div class="container text-center">
-    <div class="row">
-    <!-- Montos -->
-        <div class="col-sm-6">
-            <div class="card" style="height: 280px; margin-top: 10px; overflow-y: auto;">
-                <div class="card-body">
-                    <div *ngFor="let prod of productosAgregados">
-                        <div class="row" style="padding-bottom: 10px;">
-                            <div class="col-sm-8 text-start">
-                                {{prod.nombre}} (x{{prod.cantidad}})
-                            </div>
-                            <div class="col-sm-4 text-end">
-                                ${{prod.precio * (prod.cantidad || 1)}}
-                                <button class="btn btn-sm btn-danger float-end"
-                                    (click)="eliminarProducto(prod)">-</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+<div class="container mt-3">
+  <div class="row">
 
-    <!-- Productos -->
-        <div class="col-sm-6">
-            <div class="card" style="height: 280px; margin-top: 10px; overflow-y: auto;">
-                <div class="card-body">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item" *ngFor="let catP of categoriasProductos">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" 
-                                data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapseCat' + catP.id"
-                                aria-expanded="false" [attr.aria-controls]="'flush-collapseCat' + catP.id">
-                                    {{catP.nombre}}
-                                </button>
-                            </h2>
-                            <div [id]="'flush-collapseCat' + catP.id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li style="padding-bottom: 10px;" *ngFor="let prod of catP.productos">{{prod.nombre}}
-                                            <button class="btn btn-sm btn-primary float-end"
-                                            (click)="agregarProducto(prod)">+</button>
-                                        </li><br>
-                                    </ul>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ░░░ COLUMNA IZQUIERDA: CARRITO ░░░ -->
+    <div class="col-md-7">
+      <div class="card shadow-sm" style="border-radius:18px; overflow:hidden;">
+
+        <!-- HEADER -->
+        <div class="text-center text-white py-3" style="background:#32b3ff; font-size:20px; font-weight:600;">
+          Títulos
         </div>
 
+        <!-- LISTA CARRITO -->
+        <div class="p-3" style="height:300px; overflow-y:auto;">
+          <div *ngIf="productosAgregados.length === 0" class="text-center text-muted mt-5">
+            Carrito vacío
+          </div>
 
-    <div class="row">
-        <!-- Botones -->
-        <div class="col-sm-8">
-            <div class="card" style="border: none">
-                <div class="card-body">
-                    <label class="lbl-total">{{"labels.total" | transloco}}</label>
-                    <label class="lbl-monto">$ 00.0</label>
-                </div>
+          <div *ngFor="let prod of productosAgregados"
+               class="d-flex align-items-center border-bottom py-2">
+
+            <div class="flex-grow-1">
+              <div class="fw-bold fs-5">{{prod.nombre}}</div>
+              <div class="text-muted">$ {{prod.precio}}</div>
             </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="card" style="border: none">
-                <div class="card-body">
-                    <label class="btn btn-info" style="color: #FFF;">Pagar</label>
-                                           
-                </div>
+
+            <!-- Controles -->
+            <div class="d-flex align-items-center me-3">
+
+              <button class="btn btn-outline-dark rounded-circle"
+                      style="width:38px; height:38px; font-size:22px;"
+                      (click)="increase(prod)">+</button>
+
+              <div class="mx-2 border px-2 py-1" style="width:36px; text-align:center;">
+                {{prod.cantidad}}
+              </div>
+
+              <button class="btn btn-outline-dark rounded-circle"
+                      style="width:38px; height:38px; font-size:22px;"
+                      (click)="decrease(prod)">−</button>
             </div>
+
+            <div class="fw-bold fs-6 me-3" style="width:90px; text-align:right;">
+              {{ formatCurrency(prod.precio * prod.cantidad) }}
+            </div>
+
+            <button class="btn text-danger" (click)="remove(prod)">🗑</button>
+          </div>
         </div>
+
+        <!-- TOTAL + PAGO -->
+        <div class="p-3 d-flex justify-content-between align-items-center">
+
+          <div class="fs-1 fw-bold">Total  
+            <span>{{ formatCurrency(total) }}</span>
+          </div>
+
+          <div class="d-flex flex-column align-items-center">
+
+            <label class="fw-semibold">Forma de pago</label>
+            <select [(ngModel)]="formaPagoSeleccionada" class="form-select mb-2"
+                    style="width:140px;">
+              <option *ngFor="let f of formasPago" [value]="f">{{f}}</option>
+            </select>
+
+            <button class="btn text-white px-4 py-2"
+                    style="background:#32b3ff; border-radius:20px; font-size:18px;"
+                    (click)="pagar()">
+              Pagar
+            </button>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+    <!-- ░░░ COLUMNA DERECHA: PRODUCTOS ░░░ -->
+    <div class="col-md-5">
+
+      <!-- BUSCADOR -->
+      <input class="form-control mb-2" placeholder="Buscar producto...">
+
+      <div class="card shadow-sm p-2" style="height:420px; overflow-y:auto; border-radius:18px;">
+
+        <!-- CATEGORÍAS COLAPSABLES -->
+        <div *ngFor="let cat of categoriasProductos; let i = index"
+             class="mb-3 border rounded">
+
+          <!-- ENCABEZADO CATEGORÍA (click para expandir) -->
+          <div class="p-2 text-center fw-bold"
+               style="background:#dcdcdc; cursor:pointer;"
+               data-bs-toggle="collapse"
+               [attr.data-bs-target]="'#cat' + i">
+            {{cat.nombre}}
+          </div>
+
+          <!-- Contenido de la categoría -->
+          <div class="collapse" [attr.id]="'cat' + i">
+            <div *ngFor="let prod of cat.productos"
+                 class="d-flex justify-content-between align-items-center p-2 border-top">
+
+              <div>
+                <div class="fw-semibold">{{prod.nombre}}</div>
+                <div class="text-muted">$ {{prod.precio}}</div>
+              </div>
+
+              <button class="btn"
+                      style="background:#7be37b; width:40px; height:40px; font-size:20px;"
+                      (click)="agregarProducto(prod)">
+                +
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
